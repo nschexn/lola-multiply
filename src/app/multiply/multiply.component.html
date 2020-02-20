@@ -1,7 +1,24 @@
 <div>
   Problem:
-  <div>{{expression.factor1}} x {{expression.factor2}} = <input type="number" [(ngModel)]="answerValue"></div>
+  <div>{{expression.factor1}} x {{expression.factor2}} = 
+    <input 
+      type="number" 
+      [(ngModel)]="answerValue"
+      (keydown.enter)="checkAnswer()"
+      >
+    </div>
   <div>
     <button (click)="checkAnswer()">Submit</button>
   </div>
+</div>
+<br><br>
+<div>
+  <!-- You got {{correctAnswers}} correct answers in a row! -->
+  {{feedback}}
+</div>
+
+
+
+<div id="prizes-won">
+  {{prizes}}
 </div>
