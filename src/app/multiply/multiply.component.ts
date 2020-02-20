@@ -74,12 +74,12 @@ export class MultiplyComponent  {
 
   public trackPrizes(correctAnswers){
     switch(correctAnswers) {
-      case 1:
-        this.prizes.push(this.emojis[0]);  
+      case 10:
+        this.prizes = [...this.emojis[0]];
         console.log(this.prizes);
       break;
-      case 2:
-        this.prizes.push(this.emojis[1]);  
+      case 20:
+        this.prizes = [...this.prizes ,...this.emojis[1]];
         console.log(this.prizes);
       break;
       default:

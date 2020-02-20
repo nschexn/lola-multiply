@@ -19,6 +19,7 @@
 
 
 
-<div id="prizes-won">
+<div id="prizes-won" *ngIf="prizes.length">
+  <h4>Prizes</h4>
   {{prizes}}
 </div>
