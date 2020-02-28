@@ -1,0 +1,15 @@
+.large-text {
+  font-size: 72px;
+}
+
+.medium-text {
+  font-size: 30px
+}
+
+.submit-btn {
+  margin: 0 20px;
+}
+
+.container {
+  text-align: center;
+}

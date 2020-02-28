@@ -1,25 +1,26 @@
-<div>
-  Problem:
-  <div>{{expression.factor1}} x {{expression.factor2}} = 
+<div class="container">
+  <div class="large-text">{{expression.factor1}} x {{expression.factor2}} = 
     <input 
-      type="number" 
+      class="large-text"
+      type="text" 
       [(ngModel)]="answerValue"
       (keydown.enter)="checkAnswer()"
       >
+      <button class="large-text submit-btn"  (click)="checkAnswer()"> 🙋 </button>
     </div>
-  <div>
-    <button (click)="checkAnswer()">Submit</button>
-  </div>
-</div>
+    
+
 <br><br>
-<div>
+<div class="medium-text">
   <!-- You got {{correctAnswers}} correct answers in a row! -->
   {{feedback}}
 </div>
 
 
 
-<div id="prizes-won" *ngIf="prizes.length">
+<div id="prizes-won" *ngIf="prizes.length" class="medium-text">
   <h4>Prizes</h4>
-  {{prizes}}
+  <div class="large-text">{{prizes}}</div>
+</div>
+
 </div>

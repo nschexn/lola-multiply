@@ -20,9 +20,29 @@ export class MultiplyComponent  {
 
   answerValue: number = this.expression.answer;
   correctAnswers: number = 0;
-  emojis: string[] = ['🍕','🐶'];
+  emojis: string[] = ['🍕','🐶','🏆','🏀','🎮','🎨'];
   prizes: string[] = [];
   feedback: string = `Let's get started!`;
+  wrongAnswerFeedback: string[] = [
+    `Oh no! You answered incorrectly. It's okay, try again. Daddy 👨 still 	❤️'s you!`,
+    `Did you get it wrong because Rosebud distracted you? 🐕‍🦺 🐾`,
+    `🦊 Swipper no swippy! 🦊`,
+    `💩`,
+    `Don't be so 😔`,
+    `Keep trying. Maybe one day you will be as smart as daddy! 👨`,
+    `Try again, but this 🕰️ answer correctly!`,
+    `Your multiplication knowledge is still under construction 🚧`,
+    `🎅 said no 🎁's for you under the 🎄 until you learn how to multiply!`,
+    `Wrong! 🙅`,
+    `Nope 👎`,
+    `Umm, you got the answer right...🤥`,
+    `You can't be a 🤓 if you don't know your multiplication table`,
+    `You are not a 🤖`,
+    `Hold up! Let me 👀 for the correct answer`,
+    `💣`,
+    `Looking for the correct answer 🔦`,
+    
+  ];
 
   constructor() { }
 
@@ -35,13 +55,6 @@ export class MultiplyComponent  {
     let factor1: number = Math.floor(Math.random() * 11);
     let factor2: number = Math.floor(Math.random() * 11);
     let answer:number = factor1 * factor2;
-    console.log(
-      {
-      factor1: factor1,
-      factor2: factor2,
-      answer: answer,
-    }
-    );
     return {
       factor1: factor1,
       factor2: factor2,
@@ -56,19 +69,15 @@ export class MultiplyComponent  {
   }
 
   public checkAnswer = () => {
-    console.log('answerValue', this.answerValue);
-    console.log('expressionAnswer', this.expression.answer);
     if(this.answerValue == this.expression.answer){
-      console.log(true);
       this.assign(this.gmp());
       this.answerValue = null;
       this.correctAnswers++;
       this.trackPrizes(this.correctAnswers);
       this.feedback = `You got ${this.correctAnswers} correct answers in a row!`;
     } else {
-      console.log(false)
       this.correctAnswers = 0;
-      this.feedback = `Oh no! You answered incorrectly. It's okay, try again. 👨 still 	❤️'s you!`; 
+      this.feedback = this.wrongAnswerFeedback[Math.floor(Math.random() * this.wrongAnswerFeedback.length)]; 
     }
   }
 
@@ -76,11 +85,21 @@ export class MultiplyComponent  {
     switch(correctAnswers) {
       case 5:
         this.prizes = [...this.emojis[0]];
-        console.log(this.prizes);
       break;
       case 10:
         this.prizes = [...this.prizes ,...this.emojis[1]];
-        console.log(this.prizes);
+      break;
+      case 15:
+        this.prizes = [...this.prizes ,...this.emojis[2]];
+      break;
+      case 20:
+        this.prizes = [...this.prizes ,...this.emojis[3]];
+      break;
+      case 25:
+        this.prizes = [...this.prizes ,...this.emojis[4]];
+      break;
+      case 30:
+        this.prizes = [...this.prizes ,...this.emojis[5]];
       break;
       default:
         // code block
