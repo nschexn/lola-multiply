@@ -1,10 +1,13 @@
 <div class="container">
   <div class="large-text">{{expression.factor1}} x {{expression.factor2}} = 
     <input 
-      class="large-text"
-      type="text" 
+      id="answer-input"
+      class="large-text number-field"
+      type="number" 
       [(ngModel)]="answerValue"
       (keydown.enter)="checkAnswer()"
+      onblur="this.focus()"
+      autofocus
       >
       <button class="large-text submit-btn"  (click)="checkAnswer()"> 🙋 </button>
     </div>

@@ -43,17 +43,18 @@ export class MultiplyComponent  {
     `Looking for the correct answer 🔦`,
     
   ];
-
+  min: number = 2;
+  max: number = 12;
   constructor() { }
 
   ngAfterContentInit(){
-    this.assign(this.gmp());
+    this.assign(this.gmp(this.min,this.max));
   }
 
   // Generate Multiplication Problem
-  public gmp = (): Expression => {
-    let factor1: number = Math.floor(Math.random() * 11);
-    let factor2: number = Math.floor(Math.random() * 11);
+  public gmp = (min, max): Expression => {
+    let factor1: number = Math.floor(Math.random() * (max - min)) + min;
+    let factor2: number = Math.ceil(Math.random() * (max - min)) + min;
     let answer:number = factor1 * factor2;
     return {
       factor1: factor1,
@@ -70,11 +71,11 @@ export class MultiplyComponent  {
 
   public checkAnswer = () => {
     if(this.answerValue == this.expression.answer){
-      this.assign(this.gmp());
+      this.assign(this.gmp(this.min, this.max));
       this.answerValue = null;
       this.correctAnswers++;
       this.trackPrizes(this.correctAnswers);
-      this.feedback = `You got ${this.correctAnswers} correct answers in a row!`;
+      this.feedback = this.correctAnswers === 1 ? `Great start! Keep Going!`: `You got ${this.correctAnswers} correct answers in a row!`;
     } else {
       this.correctAnswers = 0;
       this.feedback = this.wrongAnswerFeedback[Math.floor(Math.random() * this.wrongAnswerFeedback.length)]; 
